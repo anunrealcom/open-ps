@@ -1,0 +1,128 @@
+# =====================================================================
+# Open PS / PictureTool (Qt6 / CMake) — Git 忽略规则
+# 原则：源码、构建脚本、资源、文档入库；
+#       编译产物、发布包、下载依赖、个人 IDE 配置不入库
+# =====================================================================
+
+# ---------------- 1. 构建输出目录 ----------------
+build/
+Build/
+build-*/
+cmake-build-*/
+out/
+_build/
+/bin/
+/obj/
+
+# ---------------- 2. CMake 生成物 ----------------
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+/Makefile
+*.ninja
+.ninja_*
+Testing/
+CTestTestfile.cmake
+_deps/
+/install/
+
+# ---------------- 3. Qt 中间产物 ----------------
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+qrc_*.cpp
+ui_*.h
+*.moc
+*_autogen/
+a.out
+
+# ---------------- 4. 编译中间文件 ----------------
+*.o
+*.obj
+*.lo
+*.slo
+*.gch
+*.pch
+*.d
+*.dwo
+*.tlog
+*.iobj
+*.ipdb
+*.idb
+*.ilk
+*.pdb
+*.exp
+
+# ---------------- 5. 链接产物 ----------------
+*.exe
+*.dll
+*.so
+*.so.*
+*.dylib
+*.a
+*.lib
+*.out
+*.app/
+
+# ---------------- 6. IDE / 编辑器个人配置 ----------------
+.vs/
+.idea/
+*.user
+*.user.*
+.qtcreator/*.user
+*.autosave
+*.swp
+*.swo
+*~
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---------------- 7. 日志与临时文件 ----------------
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# ---------------- 8. 发布产物 ----------------
+dist/
+release/
+*.zip
+*.7z
+*.rar
+*.msi
+
+# =====================================================================
+# 9. 开发调试残留（一次性脚本 / 截图 / 探针，不入库）
+#    警告：根目录的 *.mjs 内含明文 API Key，务必不要提交
+# =====================================================================
+
+# 接口调试脚本 + Playwright / 批量验证脚本（e2e、intent、loop、replay、repro400*、verify）
+/*.mjs
+
+# 调试用的 HTTP 请求体快照
+body_*.json
+session_backup_*.json
+
+# 一次性 PowerShell 截图 / 点击脚本
+/*.ps1
+
+# 探针程序
+sapi_probe*.cpp
+
+# 临时抓取输出
+f[0-9].txt
+h[0-9].txt
+r[0-9].txt
+
+# 界面验证截图
+ui_*.png
+selfshot.png
+
+# 注：以下资产需要入库，别误删——
+#     src/ resources/ docs/ demo_site/ vibe_images/
+#     一幻办公-logo.png / 一幻办公-logo-clean.png（品牌素材）
